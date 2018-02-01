@@ -3,8 +3,28 @@
   color: #00356A;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.menu-wrapper {
+  width: 100vw;
+  height: 10vh;
+  background-color: #777777;
+  position: sticky;
+}
+
 .text-wrapper {
-  width: 85%;
-  height: 100%;
+  width: 80vw;
+  height: 70vh;
   min-width: 300px;
+  background-color: #000000;
+  margin: 0 auto;
+}
+
+.footer {
+  width: 100vw;
+  height: 20vh;
+  background-color: #E71006
 }
