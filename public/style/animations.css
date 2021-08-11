@@ -1,0 +1,14 @@
+#menu-button {
+    transition: transform 0.15s;
+    transform: translateY(-100%);
+}
+
+#menu-section {
+    transition: transform 0.3s;
+    transform: translateY(-100%);
+}
+
+#about-section, #code-section {
+    transition: transform 0.3s;
+    transform: translateX(100%);
+}

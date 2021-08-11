@@ -10,8 +10,131 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>MajikalExplosions</title>
-        <link rel="stylesheet" href="style/public/default.css">
+        <link rel="stylesheet" href="public/style/default.css">
+        <link rel="stylesheet" href="public/style/animations.css">
+        <script>
+            var active = "menu";
+
+            function midTransition() {
+                console.log("Mid");
+                if (active == "about") {
+                    document.getElementById("about-section").style.display = "";
+                    document.getElementById("menu-button").style.display = "";
+                    document.getElementById("menu-section").style.display = "none";
+                    document.getElementById("code-section").style.display = "none";
+                }
+                else if (active == "code") {
+                    document.getElementById("code-section").style.display = "";
+                    document.getElementById("menu-button").style.display = "";
+                    document.getElementById("menu-section").style.display = "none";
+                    document.getElementById("about-section").style.display = "none";
+                }
+                else if (active == "menu") {
+                    document.getElementById("menu-section").style.display = "";
+                    document.getElementById("about-section").style.display = "none";
+                    document.getElementById("code-section").style.display = "none";
+                    document.getElementById("menu-button").style.display = "none";
+                }
+
+                //Allow DOM manipulation before modifying transitions
+                setTimeout(postTransition, 0);
+            }
+
+            function postTransition() {
+                console.log("Post");
+                if (active == "about") {
+                    document.getElementById("about-section").style.transform = "translateX(0%)";
+                    document.getElementById("menu-button").style.transform = "translateY(0%)";
+                }
+                else if (active == "code") {
+                    document.getElementById("code-section").style.transform = "translateX(0%)";
+                    document.getElementById("menu-button").style.transform = "translateY(0%)";
+                }
+                else if (active == "menu") {
+                    document.getElementById("menu-section").style.transform = "translateY(0%)";
+                }
+            }
+
+            window.addEventListener("load", function() {
+                //Initial states
+                document.getElementById("menu-section").style.transform = "translateY(0%)";
+                document.getElementById("code-section").style.display = "none";
+                document.getElementById("about-section").style.display = "none";
+                document.getElementById("menu-button").style.display = "none";
+
+                document.querySelectorAll(".transition-listener").forEach(element => {
+                    element.addEventListener("transitionend", midTransition);
+                });
+                
+                //Transition out all other elements when button clicked
+                document.getElementById("about-button").addEventListener("click", function() {
+                    document.getElementById("code-section").style.transform = "translateX(100%)";
+                    document.getElementById("menu-section").style.transform = "translateY(-100%)";
+                    active = "about";
+                });
+
+                document.getElementById("code-button").addEventListener("click", function() {
+                    document.getElementById("about-section").style.transform = "translateX(100%)";
+                    document.getElementById("menu-section").style.transform = "translateY(-100%)";
+                    active = "code";
+                });
+
+                document.getElementById("menu-button").addEventListener("click", function() {
+                    document.getElementById("about-section").style.transform = "translateX(100%)";
+                    document.getElementById("code-section").style.transform = "translateX(100%)";
+                    document.getElementById("menu-button").style.transform = "translateY(-100%)";
+                    active = "menu";
+                });
+            });
+        </script>
     </head>
     <body>
-        <p>Under construction kinda.</p>
+        <button class="button is-radiusless is-fullwidth is-primary" id="menu-button">Menu</button>
+
+
+        <div class="section is-medium transition-listener" id="menu-section">
+            <div class="container is-centered">
+                <h1 class="title is-1 has-text-centered m-4">Joseph</h1>
+            </div>
+            <div class="columns is-desktop is-variable">
+                <div class="column">
+                    <button id="about-button" class="button is-primary is-large is-fullwidth">ABOUT</button>
+                </div>
+    
+                <div class="column">
+                    <button id="code-button" class="button is-primary is-large is-fullwidth">CODE</button>
+                </div>
+            </div>
+        </div>
+        
+
+        <div class="section transition-listener" id="about-section">
+            <section class="section has-background-light m-3">
+                <h1 class="title is-3">About Me</h1>
+                <p class="subtitle is-6">
+                    I'm Joseph, a freshman majoring in computer science.
+                    My interests include machine learning and procedural generation.
+                </p>
+            </section>
+
+            <section class="section has-background-light m-3">
+                <h1 class="title is-3">Contact</h1>
+                <a>GitHub</a>
+            </section>
+        </div>
+
+        <div class="section transition-listener" id="code-section">
+            <section class="section has-background-light m-3">
+                <h1 class="title is-3">Overview</h1>
+                <p class="subtitle is-6">You can find some of my work on <a href="https://github.com/MajikalExplosions">GitHub</a>.</p>
+            </section>
+
+            <section class="section has-background-light m-3">
+                <h1 class="title is-3">Others</h1>
+                <p class="subtitle is-6">More work will be here, eventually.</p>
+            </section>
+            
+            
+        </div>
+    </body>
 </html>
