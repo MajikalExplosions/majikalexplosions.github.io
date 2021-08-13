@@ -8,7 +8,7 @@
     transform: translateY(-100%);
 }
 
-#about-section, #code-section {
+.content-section {
     transition: transform 0.3s;
     transform: translateX(100%);
 }

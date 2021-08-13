@@ -16,23 +16,36 @@
             var active = "menu";
 
             function midTransition() {
-                console.log("Mid");
                 if (active == "about") {
                     document.getElementById("about-section").style.display = "";
                     document.getElementById("menu-button").style.display = "";
+
                     document.getElementById("menu-section").style.display = "none";
                     document.getElementById("code-section").style.display = "none";
+                    document.getElementById("interactive-section").style.display = "none";
                 }
                 else if (active == "code") {
                     document.getElementById("code-section").style.display = "";
                     document.getElementById("menu-button").style.display = "";
+
                     document.getElementById("menu-section").style.display = "none";
                     document.getElementById("about-section").style.display = "none";
+                    document.getElementById("interactive-section").style.display = "none";
+                }
+                else if (active == "interactive") {
+                    document.getElementById("interactive-section").style.display = "";
+                    document.getElementById("menu-button").style.display = "";
+
+                    document.getElementById("menu-section").style.display = "none";
+                    document.getElementById("about-section").style.display = "none";
+                    document.getElementById("code-section").style.display = "none";
                 }
                 else if (active == "menu") {
                     document.getElementById("menu-section").style.display = "";
+
                     document.getElementById("about-section").style.display = "none";
                     document.getElementById("code-section").style.display = "none";
+                    document.getElementById("interactive-section").style.display = "none";
                     document.getElementById("menu-button").style.display = "none";
                 }
 
@@ -41,13 +54,16 @@
             }
 
             function postTransition() {
-                console.log("Post");
                 if (active == "about") {
                     document.getElementById("about-section").style.transform = "translateX(0%)";
                     document.getElementById("menu-button").style.transform = "translateY(0%)";
                 }
                 else if (active == "code") {
                     document.getElementById("code-section").style.transform = "translateX(0%)";
+                    document.getElementById("menu-button").style.transform = "translateY(0%)";
+                }
+                else if (active == "interactive") {
+                    document.getElementById("interactive-section").style.transform = "translateX(0%)";
                     document.getElementById("menu-button").style.transform = "translateY(0%)";
                 }
                 else if (active == "menu") {
@@ -60,28 +76,35 @@
                 document.getElementById("menu-section").style.transform = "translateY(0%)";
                 document.getElementById("code-section").style.display = "none";
                 document.getElementById("about-section").style.display = "none";
+                document.getElementById("interactive-section").style.display = "none";
                 document.getElementById("menu-button").style.display = "none";
 
                 document.querySelectorAll(".transition-listener").forEach(element => {
                     element.addEventListener("transitionend", midTransition);
                 });
                 
-                //Transition out all other elements when button clicked
+                //Transition out menu if content button clicked
                 document.getElementById("about-button").addEventListener("click", function() {
-                    document.getElementById("code-section").style.transform = "translateX(100%)";
                     document.getElementById("menu-section").style.transform = "translateY(-100%)";
                     active = "about";
                 });
 
                 document.getElementById("code-button").addEventListener("click", function() {
-                    document.getElementById("about-section").style.transform = "translateX(100%)";
                     document.getElementById("menu-section").style.transform = "translateY(-100%)";
                     active = "code";
                 });
+                
+                document.getElementById("interactive-button").addEventListener("click", function() {
+                    document.getElementById("menu-section").style.transform = "translateY(-100%)";
+                    active = "interactive";
+                });
 
+                //Transition out everything except the menu if menu clicked
                 document.getElementById("menu-button").addEventListener("click", function() {
                     document.getElementById("about-section").style.transform = "translateX(100%)";
                     document.getElementById("code-section").style.transform = "translateX(100%)";
+                    document.getElementById("interactive-section").style.transform = "translateX(100%)";
+
                     document.getElementById("menu-button").style.transform = "translateY(-100%)";
                     active = "menu";
                 });
@@ -106,11 +129,15 @@
                 <div class="column">
                     <button id="code-button" class="button is-primary is-large is-fullwidth">CODE</button>
                 </div>
+
+                <div class="column">
+                    <button id="interactive-button" class="button is-primary is-large is-fullwidth">CLICKABLES</button>
+                </div>
             </div>
         </div>
         
         <!--ABOUT SECTION-->
-        <div class="section transition-listener" id="about-section">
+        <div class="section transition-listener content-section" id="about-section">
 
             <!--ABOUT ME-->
             <section class="section has-background-light m-3">
@@ -137,7 +164,7 @@
         </div>
         
         <!--CODE SECTION-->
-        <div class="section transition-listener" id="code-section">
+        <div class="section transition-listener content-section" id="code-section">
 
             <!--OVERVIEW-->
             <section class="section has-background-light m-3 columns">
@@ -206,6 +233,21 @@
                 </div>
             </section>
 
+        </div>
+
+        <!--INTERACTIVE SECTION-->
+        <div class="section transition-listener content-section" id="interactive-section">
+
+            <!--OVERVIEW-->
+            <section class="section has-background-light m-3 columns">
+                <div class="column">
+                    <h1 class="title is-3 is-size-4-mobile">Clickables</h1>
+                    <p class="subtitle is-6">Eventually, I'm going to put up some clickable stuff here. Like games! Or probably tools to be honest.</p>
+                </div>
+                <div class="column is-one-fifth is-half-mobile is-offset-one-quarter-mobile">
+                    <figure class="image"><img src="res/anvil.png"></figure>
+                </div>
+            </section>
         </div>
     </body>
 </html>
