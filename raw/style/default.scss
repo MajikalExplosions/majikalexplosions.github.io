@@ -1,13 +1,27 @@
 @charset "utf-8";
 
-//Font imports
+//Font defines
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&family=Recursive:wght@300&display=swap');
-
 $family-sans-serif: "Recursive", sans-serif;
-$dark-blue: #34495E;
-$blue: #3498DB;
+$family-secondary: "Montserrat", sans-serif;
+
+
+@import "node_modules/bulma/sass/utilities/functions.sass";
+
+//Color defines
+$dark-blue: #222831;
+$blue: #30475E;
 $grey: #ECF0F1;
-$yellow: #F1C40F;
+$orange: #F2A365;
+
+//Change globals
+$primary: $orange;
+$link: $orange;
+$body-background-color: $blue;
+$text: $grey;
+$text-strong: $orange;
+$dark: $dark-blue;
+$button-color: $dark-blue;
 
 
 //TODO figure out what we don't need
