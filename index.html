@@ -119,7 +119,6 @@
         <div class="section is-medium transition-listener" id="menu-section">
             <div class="container is-centered">
                 <h1 class="title is-size-3-touch is-1 has-text-centered m-4 is-family-secondary">Joseph Liu</h1>
-                <p class="has-text-centered m-4">Note: I'm still working on this website. I am aware that it's ugly and lacks content.</p>
             </div>
             <div class="columns is-desktop is-variable">
                 <div class="column">
@@ -154,6 +153,22 @@
                 </p>
             </section>
 
+            <section class="section has-background-dark m-3">
+                <h1 class="title is-3 is-size-4-mobile is-family-secondary">Honors And Awards</h1>
+                <p class="subtitle is-6">Below, you can find a partial list of some of the awards/honors I have won.</p>
+                <div class="content">
+                    <ul>
+                        <li>UC Santa Cruz Science Internship Program SuperComputer Award for computational skills and contributions (August 2020)</li>
+                        <li>USA Computing Olympiad (USACO) Gold Division Competitor (April 2019)</li>
+                        <li>President's Volunteer Service Bronze Award (December 2019)</li>
+                        <li>Won school-wide software competition for sorting students into clubs by preference (August 2019)</li>
+                        <li>2018 FIRST Robotics Competition Silicon Valley Regional 6th Place Team</li>
+                        <li>2019 FIRST Robotics Competition Silicon Valley Regional Semifinalist Team</li>
+                        <li>Boy Scouts of America Eagle Scout</li>
+                    </ul>
+                </div>
+            </section>
+
             <!--CONTACT INFO-->
             <section class="section has-background-dark m-3">
                 <h1 class="title is-3 is-size-4-mobile is-family-secondary">Contact Information</h1>
@@ -182,7 +197,6 @@
                     <p class="subtitle is-6">You can find some of my work on <a href="https://github.com/MajikalExplosions">GitHub</a>.</p>
                 </div>
                 <div class="column is-one-fifth is-half-mobile is-offset-one-quarter-mobile">
-                    <figure class="image"><img src="res/github.png"></figure>
                 </div>
             </section>
 
@@ -194,8 +208,13 @@
                         I have been working with Sagnick Mukherjee, 
                         <a href="https://astro.illinois.edu/directory/profile/soraisam">Dr. Monika Soraisam</a> 
                         and <a href="https://www.astro.ucsc.edu/faculty/index.php?uid=pguhatha">Dr. Raja GuhaThakurta</a> 
-                        on researching variable stars in Andromeda Galaxy (M31). 
+                        on researching variable stars in Andromeda Galaxy (M31). My job on the team was primarily to use my
+                        computer science skills to process light curve data quickly, write fast SQL queries, and analyze data.
+                        I also wrote a web interface to compare images of stars at different times. We hope to have the paper,
+                        "Using the Time-Domain Aspect of the PHAT Dataset to Study Luminous Cepheids and Other Luminous Variable
+                        Stars in M31's Star Clusters (Mukherjee, Liu, et al. 2021)", finished in the near future.
                     </p>
+                    <p class="is-italic">Main Technologies Used: Jupyter Notebook, Python, SQL, HTML/CSS/JavaScript</p>
                 </div>
                 <div class="column is-one-fifth is-half-mobile is-offset-one-quarter-mobile">
                     <figure class="image">IMAGE</figure>
@@ -207,11 +226,31 @@
                     <h1 class="title is-3 is-size-4-mobile is-family-secondary">Machine Learning & Astronomy Research: Exoplanets</h1>
                     <p class="subtitle is-6">
                         I have been researching the feasibility of using a neural network classifier to identify 
-                        candidate exoplanets from astronomical observational images.
+                        candidate exoplanets from astronomical observational images. Existing techniques use convolutional
+                        neural networks on light curve data, where each image of a star is converted to a single number representing
+                        its brightness at that time. I am using a 3D convolutional neural network to preserve spatial data that
+                        can help the model identify when exoplanet transits are occurring.
                     </p>
+                    <p class="is-italic">Main Technologies Used: Convolutional Neural Networks, Pytorch, Python</p>
                 </div>
                 <div class="column is-one-fifth is-half-mobile is-offset-one-quarter-mobile">
                     <figure class="image">IMAGE</figure>
+                </div>
+            </section>
+
+            <section class="section has-background-dark m-3 columns">
+                <div class="column">
+                    <h1 class="title is-3 is-size-4-mobile is-family-secondary">USA Computing Olympiad Problem Solutions</h1>
+                    <p class="subtitle is-6">
+                        I competed in the USA Computing Olympiad, where I reached the Gold division. You can find a literally
+                        random selection of solutions I wrote for the problems 
+                        <a href="https://github.com/MajikalExplosions/usaco-problem-solutions">here</a>. I later switched to
+                        C++ for performance reasons, but I don't have that code up yet.
+                    </p>
+                    <p class="is-italic">Main Technologies Used: Java; later C++</p>
+                </div>
+                <div class="column is-one-fifth is-half-mobile is-offset-one-quarter-mobile">
+                    <figure class="image"><img src="res/usaco.jpg"></figure>
                 </div>
             </section>
 
@@ -222,6 +261,7 @@
                     <p class="subtitle is-6">
                         _TODO_
                     </p>
+                    <p class="is-italic">Main Technologies Used:</p>
                 </div>
                 <div class="column is-one-fifth is-half-mobile is-offset-one-quarter-mobile">
                     <figure class="image">_TODO_</figure>
@@ -250,8 +290,18 @@
             <!--OVERVIEW-->
             <section class="section has-background-dark m-3 columns">
                 <div class="column">
-                    <h1 class="title is-3 is-size-4-mobile is-family-secondary">Clickables</h1>
-                    <p class="subtitle is-6">Eventually, I'm going to put up some clickable stuff here. Like games! Or probably tools to be honest.</p>
+                    <h1 class="title is-3 is-size-4-mobile is-family-secondary">Group Assignment Generator</h1>
+                    <p class="subtitle is-6">
+                        I am currently working on an update to the 
+                        <a href="https://github.com/MajikalExplosions/club_sorting_program">Club Sorting Program</a>
+                        I wrote for my high school in 10th grade. While it won the school-wide contest due to
+                        its close-to-optimal results, it is run from command line and could use optimizations.
+                        I am rewriting it as a general-purpose group assignment generator, where individuals rank
+                        their preferred groups and are then assigned based on certain constraints, such as the maximum
+                        capacity of the groups. It will include a more intuitive UI written with 
+                        <a href="https://godotengine.org/">Godot</a> and eventually generate perfectly optimal assignments.
+                    </p>
+                    <p class="is-italic">Main Technologies Used: Godot, C#; Previously C++</p>
                 </div>
                 <div class="column is-one-fifth is-half-mobile is-offset-one-quarter-mobile">
                     <figure class="image"><img src="res/anvil.png"></figure>
