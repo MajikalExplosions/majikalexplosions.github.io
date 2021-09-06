@@ -16,23 +16,36 @@
             var active = "menu";
 
             function midTransition() {
-                console.log("Mid");
                 if (active == "about") {
                     document.getElementById("about-section").style.display = "";
                     document.getElementById("menu-button").style.display = "";
+
                     document.getElementById("menu-section").style.display = "none";
                     document.getElementById("code-section").style.display = "none";
+                    document.getElementById("interactive-section").style.display = "none";
                 }
                 else if (active == "code") {
                     document.getElementById("code-section").style.display = "";
                     document.getElementById("menu-button").style.display = "";
+
                     document.getElementById("menu-section").style.display = "none";
                     document.getElementById("about-section").style.display = "none";
+                    document.getElementById("interactive-section").style.display = "none";
+                }
+                else if (active == "interactive") {
+                    document.getElementById("interactive-section").style.display = "";
+                    document.getElementById("menu-button").style.display = "";
+
+                    document.getElementById("menu-section").style.display = "none";
+                    document.getElementById("about-section").style.display = "none";
+                    document.getElementById("code-section").style.display = "none";
                 }
                 else if (active == "menu") {
                     document.getElementById("menu-section").style.display = "";
+
                     document.getElementById("about-section").style.display = "none";
                     document.getElementById("code-section").style.display = "none";
+                    document.getElementById("interactive-section").style.display = "none";
                     document.getElementById("menu-button").style.display = "none";
                 }
 
@@ -41,13 +54,16 @@
             }
 
             function postTransition() {
-                console.log("Post");
                 if (active == "about") {
                     document.getElementById("about-section").style.transform = "translateX(0%)";
                     document.getElementById("menu-button").style.transform = "translateY(0%)";
                 }
                 else if (active == "code") {
                     document.getElementById("code-section").style.transform = "translateX(0%)";
+                    document.getElementById("menu-button").style.transform = "translateY(0%)";
+                }
+                else if (active == "interactive") {
+                    document.getElementById("interactive-section").style.transform = "translateX(0%)";
                     document.getElementById("menu-button").style.transform = "translateY(0%)";
                 }
                 else if (active == "menu") {
@@ -60,28 +76,35 @@
                 document.getElementById("menu-section").style.transform = "translateY(0%)";
                 document.getElementById("code-section").style.display = "none";
                 document.getElementById("about-section").style.display = "none";
+                document.getElementById("interactive-section").style.display = "none";
                 document.getElementById("menu-button").style.display = "none";
 
                 document.querySelectorAll(".transition-listener").forEach(element => {
                     element.addEventListener("transitionend", midTransition);
                 });
                 
-                //Transition out all other elements when button clicked
+                //Transition out menu if content button clicked
                 document.getElementById("about-button").addEventListener("click", function() {
-                    document.getElementById("code-section").style.transform = "translateX(100%)";
                     document.getElementById("menu-section").style.transform = "translateY(-100%)";
                     active = "about";
                 });
 
                 document.getElementById("code-button").addEventListener("click", function() {
-                    document.getElementById("about-section").style.transform = "translateX(100%)";
                     document.getElementById("menu-section").style.transform = "translateY(-100%)";
                     active = "code";
                 });
+                
+                document.getElementById("interactive-button").addEventListener("click", function() {
+                    document.getElementById("menu-section").style.transform = "translateY(-100%)";
+                    active = "interactive";
+                });
 
+                //Transition out everything except the menu if menu clicked
                 document.getElementById("menu-button").addEventListener("click", function() {
                     document.getElementById("about-section").style.transform = "translateX(100%)";
                     document.getElementById("code-section").style.transform = "translateX(100%)";
+                    document.getElementById("interactive-section").style.transform = "translateX(100%)";
+
                     document.getElementById("menu-button").style.transform = "translateY(-100%)";
                     active = "menu";
                 });
@@ -90,113 +113,201 @@
     </head>
     <body>
         <!--MENU BUTTON-->
-        <button class="button is-radiusless is-fullwidth is-primary" id="menu-button">Menu</button>
+        <button class="button is-radiusless is-fullwidth is-primary is-family-secondary has-text-dark" id="menu-button">MENU</button>
 
         <!--MENU SCREEN-->
         <div class="section is-medium transition-listener" id="menu-section">
             <div class="container is-centered">
-                <h1 class="title is-size-3-touch is-1 has-text-centered m-4">Joseph Liu</h1>
-                <p class="has-text-centered m-4">Note: I'm still working on this website. I am aware that it's ugly and lacks content.</p>
+                <h1 class="title is-size-3-touch is-1 has-text-centered m-4 is-family-secondary">Joseph Liu</h1>
             </div>
             <div class="columns is-desktop is-variable">
                 <div class="column">
-                    <button id="about-button" class="button is-primary is-large is-fullwidth">ABOUT</button>
+                    <button id="about-button" class="button is-primary is-large is-fullwidth is-family-secondary has-text-dark">ABOUT</button>
                 </div>
     
                 <div class="column">
-                    <button id="code-button" class="button is-primary is-large is-fullwidth">CODE</button>
+                    <button id="code-button" class="button is-primary is-large is-fullwidth is-family-secondary has-text-dark">CODE</button>
+                </div>
+
+                <div class="column">
+                    <button id="interactive-button" class="button is-primary is-large is-fullwidth is-family-secondary has-text-dark">CLICKABLES</button>
                 </div>
             </div>
         </div>
         
         <!--ABOUT SECTION-->
-        <div class="section transition-listener" id="about-section">
+        <div class="section transition-listener content-section" id="about-section">
 
             <!--ABOUT ME-->
-            <section class="section has-background-light m-3">
-                <h1 class="title is-3 is-size-4-mobile">About Me</h1>
+            <section class="section has-background-dark m-3">
+                <h1 class="title is-3 is-size-4-mobile is-family-secondary">About Me</h1>
                 <p class="subtitle is-6">
-                    I'm Joseph Liu, a freshman majoring in computer science.
+                    I'm Joseph Liu, a freshman at Santa Clara University majoring in computer science. While I'm still exploring the field, my current interests include
+                    robotics, simulations, and theoretical computer science.
+                </p>
+                <p class="is-6">
+                    <strong>Languages: </strong>I'm comfortable working in C++, Java, Python, and C#. I also have experience in JS and SQL. 
+                </p>
+                <p class="is-6">
+                    <strong>Skills: </strong>I have taken courses in data structures, algorithms, computational theory, and machine learning. Many of my personal projects incorporate these in some way.
                 </p>
             </section>
 
+            <section class="section has-background-dark m-3">
+                <h1 class="title is-3 is-size-4-mobile is-family-secondary">Honors And Awards</h1>
+                <p class="subtitle is-6">Below, you can find a partial list of some of the awards/honors I have won.</p>
+                <div class="content">
+                    <ul>
+                        <li>UC Santa Cruz Science Internship Program SuperComputer Award for computational skills and contributions (August 2020)</li>
+                        <li>USA Computing Olympiad (USACO) Gold Division Competitor (April 2019)</li>
+                        <li>President's Volunteer Service Bronze Award (December 2019)</li>
+                        <li>Won school-wide software competition for sorting students into clubs by preference (August 2019)</li>
+                        <li>2018 FIRST Robotics Competition Silicon Valley Regional 6th Place Team</li>
+                        <li>2019 FIRST Robotics Competition Silicon Valley Regional Semifinalist Team</li>
+                        <li>Boy Scouts of America Eagle Scout</li>
+                    </ul>
+                </div>
+                <div class="column is-one-fifth is-half-mobile is-offset-one-quarter-mobile">
+                </div>
+            </section>
+
             <!--CONTACT INFO-->
-            <section class="section has-background-light m-3">
-                <h1 class="title is-3 is-size-4-mobile">Contact Information</h1>
+            <section class="section has-background-dark m-3">
+                <h1 class="title is-3 is-size-4-mobile is-family-secondary">Contact Information</h1>
                 <a href="https://github.com/MajikalExplosions">GitHub</a>
                 </br>
                 <a href="https://www.linkedin.com/in/joseph-liu-27012419a/">LinkedIn</a>
+                </br>
+                <a href="res/resume.pdf">Resume</a>
             </section>
 
             <!-- TEMPLATE
-            <section class="section has-background-light m-3">
-                <h1 class="title is-3 is-size-4-mobile">__TODO__</h1>
+            <section class="section has-background-dark m-3">
+                <h1 class="title is-3 is-size-4-mobile is-family-secondary">__TODO__</h1>
                 <p class="subtitle is-6">__TODO__</p>
             </section>
             -->
         </div>
         
         <!--CODE SECTION-->
-        <div class="section transition-listener" id="code-section">
+        <div class="section transition-listener content-section" id="code-section">
 
             <!--OVERVIEW-->
-            <section class="section has-background-light m-3 columns">
+            <section class="section has-background-dark m-3 columns">
                 <div class="column">
-                    <h1 class="title is-3 is-size-4-mobile">Overview</h1>
+                    <h1 class="title is-3 is-size-4-mobile is-family-secondary">Overview</h1>
                     <p class="subtitle is-6">You can find some of my work on <a href="https://github.com/MajikalExplosions">GitHub</a>.</p>
+                </div>
+                <div class="column is-one-fifth is-half-mobile is-offset-one-quarter-mobile">
                 </div>
             </section>
 
-            <!--VARIABLE STARS-->
-            <section class="section has-background-light m-3 columns">
+            <section class="section has-background-dark m-3 columns">
                 <div class="column">
-                    <h1 class="title is-3 is-size-4-mobile">Astronomy Research: Variable Stars</h1>
+                    <h1 class="title is-3 is-size-4-mobile is-family-secondary">This Website</h1>
+                    <p class="subtitle is-6">
+                        While I'm still working on this website and there's a lot of work that I haven't yet added, I think there
+                        is enough information here to have it up. Currently, my plans include a general restyle, more images,
+                        more detailed descriptions, and a more comprehensive list of what I've worked on.
+                    </p>
+                    <p class="is-italic">Main Technologies Used: HTML, JavaScript, SCSS</p>
+                </div>
+                <div class="column is-one-fifth is-half-mobile is-offset-one-quarter-mobile">
+            </section>
+
+            <!--VARIABLE STARS-->
+            <section class="section has-background-dark m-3 columns">
+                <div class="column">
+                    <h1 class="title is-3 is-size-4-mobile is-family-secondary">Astronomy Research: Variable Stars</h1>
                     <p class="subtitle is-6">
                         I have been working with Sagnick Mukherjee, 
                         <a href="https://astro.illinois.edu/directory/profile/soraisam">Dr. Monika Soraisam</a> 
                         and <a href="https://www.astro.ucsc.edu/faculty/index.php?uid=pguhatha">Dr. Raja GuhaThakurta</a> 
-                        on researching variable stars in Andromeda Galaxy (M31). 
+                        on researching variable stars in Andromeda Galaxy (M31). My job on the team was primarily to use my
+                        computer science skills to process light curve data quickly, write fast SQL queries, and analyze data.
+                        I also wrote a web interface to compare images of stars at different times. We hope to have the paper,
+                        "Using the Time-Domain Aspect of the PHAT Dataset to Study Luminous Cepheids and Other Luminous Variable
+                        Stars in M31's Star Clusters (Mukherjee, Liu, et al. 2021)", finished in the near future.
                     </p>
+                    <p class="is-italic">Main Technologies Used: Jupyter Notebook, Python, SQL, HTML/CSS/JavaScript</p>
+                </div>
+                <div class="column is-one-fifth is-half-mobile is-offset-one-quarter-mobile">
+                    <figure class="image"></figure>
                 </div>
             </section>
 
-            <section class="section has-background-light m-3 columns">
+            <section class="section has-background-dark m-3 columns">
                 <div class="column">
-                    <h1 class="title is-3 is-size-4-mobile">Machine Learning & Astronomy Research: Exoplanets</h1>
+                    <h1 class="title is-3 is-size-4-mobile is-family-secondary">Machine Learning & Astronomy Research: Exoplanets</h1>
                     <p class="subtitle is-6">
                         I have been researching the feasibility of using a neural network classifier to identify 
-                        candidate exoplanets from astronomical observational images.
+                        candidate exoplanets from astronomical observational images. Existing techniques use convolutional
+                        neural networks on light curve data, where each image of a star is converted to a single number representing
+                        its brightness at that time. I am using a 3D convolutional neural network to preserve spatial data that
+                        can help the model identify when exoplanet transits are occurring.
                     </p>
+                    <p class="is-italic">Main Technologies Used: Convolutional Neural Networks, Pytorch, Python</p>
+                </div>
+                <div class="column is-one-fifth is-half-mobile is-offset-one-quarter-mobile">
+                    <figure class="image"></figure>
+                </div>
+            </section>
+
+            <section class="section has-background-dark m-3 columns">
+                <div class="column">
+                    <h1 class="title is-3 is-size-4-mobile is-family-secondary">USA Computing Olympiad Problem Solutions</h1>
+                    <p class="subtitle is-6">
+                        I competed in the USA Computing Olympiad, where I reached the Gold division. You can find a literally
+                        random selection of solutions I wrote for the problems 
+                        <a href="https://github.com/MajikalExplosions/usaco-problem-solutions">here</a>. I later switched to
+                        C++ for performance reasons, but I don't have that code up yet.
+                    </p>
+                    <p class="is-italic">Main Technologies Used: Java; later C++</p>
+                </div>
+                <div class="column is-one-fifth is-half-mobile is-offset-one-quarter-mobile">
+                    <figure class="image"><img src="res/usaco.jpg"></figure>
                 </div>
             </section>
 
             <!-- TEMPLATE
-            <section class="section has-background-light m-3 columns">
+            <section class="section has-background-dark m-3 columns">
                 <div class="column">
-                    <h1 class="title is-3 is-size-4-mobile">_TODO_</h1>
+                    <h1 class="title is-3 is-size-4-mobile is-family-secondary">_TODO_</h1>
                     <p class="subtitle is-6">
                         _TODO_
                     </p>
+                    <p class="is-italic">Main Technologies Used:</p>
                 </div>
                 <div class="column is-one-fifth is-half-mobile is-offset-one-quarter-mobile">
                     <figure class="image">_TODO_</figure>
                 </div>
             </section>
             -->
+        </div>
 
-            <!--TODO: OTHER PROJECTS AND THINGS-->
-            <section class="section has-background-light m-3 columns">
+        <!--INTERACTIVE SECTION-->
+        <div class="section transition-listener content-section" id="interactive-section">
+
+            <!--OVERVIEW-->
+            <section class="section has-background-dark m-3 columns">
                 <div class="column">
-                    <h1 class="title is-3 is-size-4-mobile">Other Stuff</h1>
+                    <h1 class="title is-3 is-size-4-mobile is-family-secondary">Group Assignment Generator</h1>
                     <p class="subtitle is-6">
-                        Still workin' on it. :)
+                        I am currently working on an update to the 
+                        <a href="https://github.com/MajikalExplosions/club_sorting_program">Club Sorting Program</a>
+                        I wrote for my high school in 10th grade. While it won the school-wide contest due to
+                        its close-to-optimal results, it is run from command line and could use optimizations.
+                        I am rewriting it as a general-purpose group assignment generator, where individuals rank
+                        their preferred groups and are then assigned based on certain constraints, such as the maximum
+                        capacity of the groups. It will include a more intuitive UI written with 
+                        <a href="https://godotengine.org/">Godot</a> and eventually generate perfectly optimal assignments.
                     </p>
+                    <p class="is-italic">Main Technologies Used: Godot, C#; Previously C++</p>
                 </div>
                 <div class="column is-one-fifth is-half-mobile is-offset-one-quarter-mobile">
                     <figure class="image"><img src="res/anvil.png"></figure>
                 </div>
             </section>
-
         </div>
     </body>
 </html>
